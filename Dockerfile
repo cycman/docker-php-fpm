@@ -17,10 +17,11 @@ ADD ./docker-entrypoint.sh ./
 ADD ./rsyslog.conf /etc/rsyslog.conf
 RUN chmod +x ./docker-entrypoint.sh
 RUN cd ./swoole-v4.8.13
-RUN phpize && \
-./configure \
---enable-openssl --enable-sockets --enable-mysqlnd --enable-swoole-curl --enable-cares --enable-swoole-pgsql && \
-make && make install
+RUN phpize 
+RUN ./configure --enable-openssl --enable-sockets --enable-mysqlnd --enable-swoole-curl --enable-cares --enable-swoole-pgsql
+RUN make
+RUN make install
+
 
 ENV LC_ALL C.UTF-8
 ENTRYPOINT ["./docker-entrypoint.sh"]
