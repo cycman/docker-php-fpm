@@ -4,6 +4,7 @@ MAINTAINER cyc <cclikecode@gmail.com>
 RUN apt-get update && \
     apt-get install -y gcc && \
     apt-get install -y autoconf && \
+    apt-get install -y php-dev && \
     apt-get install -y  build-essential && \
     apt-get install -y --no-install-recommends \
     cron && \
