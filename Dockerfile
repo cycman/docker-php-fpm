@@ -18,7 +18,7 @@ ADD ./docker-entrypoint.sh ./
 ADD ./rsyslog.conf /etc/rsyslog.conf
 RUN chmod +x ./docker-entrypoint.sh
 RUN cd ./swoole-v4.8.13
-RUN phpize 
+RUN    /opt/bitnami/php/bin/phpize 
 RUN ./configure --enable-openssl --enable-sockets --enable-mysqlnd --enable-swoole-curl --enable-cares --enable-swoole-pgsql
 RUN make
 RUN make install
