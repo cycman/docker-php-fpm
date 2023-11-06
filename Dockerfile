@@ -4,7 +4,6 @@ MAINTAINER cyc <cclikecode@gmail.com>
 RUN apt-get update && \
     apt-get install -y gcc && \
     apt-get install -y autoconf && \
-    apt-get install -y php-dev && \
     apt-get install -y  build-essential && \
     apt-get install -y --no-install-recommends \
     cron && \
@@ -23,7 +22,7 @@ ADD ./rsyslog.conf /etc/rsyslog.conf
 RUN chmod +x ./docker-entrypoint.sh
 RUN cd ./swoole-v4.8.13
 RUN  cd ./swoole-v4.8.13 &&  /opt/bitnami/php/bin/phpize 
-RUN cd ./swoole-v4.8.13 &&./configure --enable-openssl --enable-sockets --enable-mysqlnd --enable-swoole-curl --enable-cares --enable-swoole-pgsql
+RUN cd ./swoole-v4.8.13 && ./configure --with-php-config=/opt/bitnami/php/bin/php-config --with-openssl-dir=/usr/lib/ssl --enable-openssl --enable-sockets --enable-mysqlnd --enable-swoole-curl --enable-cares --enable-swoole-pgsql
 RUN cd ./swoole-v4.8.13 && make
 RUN cd ./swoole-v4.8.13 && make install
 #RUN docker-php-ext-install swoole
