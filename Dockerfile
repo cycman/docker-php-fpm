@@ -12,16 +12,21 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends rsyslog && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
+
+RUN apt-get update && apt-get install -y libc-ares-dev && apt-get install -y libcurl4-openssl-dev && \
+rm -rf /var/lib/apt/lists/* && \
+apt-get clean
 WORKDIR /root
 ADD ./swoole-v4.8.13 ./swoole-v4.8.13
 ADD ./docker-entrypoint.sh ./
 ADD ./rsyslog.conf /etc/rsyslog.conf
 RUN chmod +x ./docker-entrypoint.sh
 RUN cd ./swoole-v4.8.13
-RUN    /opt/bitnami/php/bin/phpize 
-RUN ./configure --enable-openssl --enable-sockets --enable-mysqlnd --enable-swoole-curl --enable-cares --enable-swoole-pgsql
-RUN make
-RUN make install
+RUN  cd ./swoole-v4.8.13 &&  /opt/bitnami/php/bin/phpize 
+RUN cd ./swoole-v4.8.13 &&./configure --enable-openssl --enable-sockets --enable-mysqlnd --enable-swoole-curl --enable-cares --enable-swoole-pgsql
+RUN cd ./swoole-v4.8.13 && make
+RUN cd ./swoole-v4.8.13 && make install
+#RUN docker-php-ext-install swoole
 
 
 ENV LC_ALL C.UTF-8
