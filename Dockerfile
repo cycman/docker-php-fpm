@@ -12,6 +12,11 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
 
+RUN install_packages libsodium-dev \
+    && docker-php-ext-install sodium \
+    && docker-php-ext-enable sodium
+
+
 RUN apt-get update && apt-get install -y libc-ares-dev && apt-get install -y libcurl4-openssl-dev && apt-get install -y zlib1g-dev && \
 rm -rf /var/lib/apt/lists/* && \
 apt-get clean
