@@ -16,7 +16,6 @@ RUN apt-get update && apt-get install -y libc-ares-dev && apt-get install -y lib
 rm -rf /var/lib/apt/lists/* && \
 apt-get clean
 WORKDIR /root
-RUN docker-php-ext-enable sodium
 ADD ./swoole-v4.8.13 ./swoole-v4.8.13
 ADD ./docker-entrypoint.sh ./
 ADD ./rsyslog.conf /etc/rsyslog.conf
