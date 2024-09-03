@@ -16,12 +16,13 @@ RUN apt-get update && apt-get install -y libc-ares-dev && apt-get install -y lib
 rm -rf /var/lib/apt/lists/* && \
 apt-get clean
 WORKDIR /root
+RUN docker-php-ext-enable sodium
 ADD ./swoole-v4.8.13 ./swoole-v4.8.13
 ADD ./docker-entrypoint.sh ./
 ADD ./rsyslog.conf /etc/rsyslog.conf
 RUN chmod +x ./docker-entrypoint.sh
 RUN cd ./swoole-v4.8.13
-RUN  cd ./swoole-v4.8.13 &&  make clean 
+#RUN  cd ./swoole-v4.8.13 &&  make clean 
 RUN  cd ./swoole-v4.8.13 &&  /opt/bitnami/php/bin/phpize 
 RUN cd ./swoole-v4.8.13 && ./configure --with-php-config=/opt/bitnami/php/bin/php-config --with-openssl-dir=/usr/lib/ssl --enable-openssl --enable-sockets --enable-mysqlnd --enable-swoole-curl --enable-cares --enable-swoole-pgsql --with-sodium
 RUN cd ./swoole-v4.8.13 && make
