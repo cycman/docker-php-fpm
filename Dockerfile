@@ -23,7 +23,7 @@ RUN chmod +x ./docker-entrypoint.sh
 RUN cd ./swoole-v4.8.13
 #RUN  cd ./swoole-v4.8.13 &&  make clean 
 RUN  cd ./swoole-v4.8.13 &&  /opt/bitnami/php/bin/phpize 
-RUN cd ./swoole-v4.8.13 && ./configure --with-php-config=/opt/bitnami/php/bin/php-config --with-openssl-dir=/usr/lib/ssl --enable-openssl --enable-sockets --enable-mysqlnd --enable-swoole-curl --enable-cares --enable-swoole-pgsql --with-sodium
+RUN cd ./swoole-v4.8.13 && ./configure --with-php-config=/opt/bitnami/php/bin/php-config --with-openssl-dir=/usr/lib/ssl --enable-openssl --enable-sockets --enable-mysqlnd --enable-swoole-curl --enable-cares --enable-swoole-pgsql
 RUN cd ./swoole-v4.8.13 && make
 RUN cd ./swoole-v4.8.13 && make install
 #RUN docker-php-ext-install swoole
