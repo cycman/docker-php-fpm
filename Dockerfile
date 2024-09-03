@@ -12,7 +12,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
 
-RUN install_packages libsodium-dev \
+RUN apt-get install  libsodium-dev \
     && docker-php-ext-install sodium \
     && docker-php-ext-enable sodium
 
