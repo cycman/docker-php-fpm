@@ -12,10 +12,10 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
 
-#WORKDIR /root
+WORKDIR /root
 
-#ADD ./libsodium-1.0.20 ./libsodium-1.0.20
-#RUN cd ./libsodium-1.0.20 && ./configure && make && make install
+ADD ./libsodium-1.0.20 ./libsodium-1.0.20
+RUN cd ./libsodium-1.0.20 && ./configure && make && make install
 
 WORKDIR /root
 ADD ./libsodium-php-2.0.22 ./libsodium-php-2.0.22
