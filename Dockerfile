@@ -19,6 +19,7 @@ RUN cd ./libsodium-1.0.20 && ./configure && make && make install
 
 WORKDIR /root
 ADD ./libsodium-php-2.0.22 ./libsodium-php-2.0.22
+RUN ls -la ./libsodium-php-2.0.22
 RUN cd ./libsodium-php-2.0.22 && pwd
 RUN cd ./libsodium-php-2.0.22 && chmod +r config.m4
 RUN cd ./libsodium-php-2.0.22 && /opt/bitnami/php/bin/phpize 
