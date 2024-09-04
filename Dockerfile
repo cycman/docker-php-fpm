@@ -18,11 +18,11 @@ ADD ./libsodium-1.0.20 ./libsodium-1.0.20
 RUN cd ./libsodium-1.0.20 && ./configure && make && make install
 
 WORKDIR /root
-ADD ./libsodium-php-2.0.22 ./libsodium-php-2.0.22
-RUN cd ./libsodium-php-2.0.22 && pwd
-RUN cd ./libsodium-php-2.0.22 && /opt/bitnami/php/bin/phpize 
-RUN cd ./libsodium-php-2.0.22 && ./configure --with-php-config=/opt/bitnami/php/bin/php-config
-RUN cd ./libsodium-php-2.0.22 && make && make install
+ADD ./libsodium-php-2.0.22t ./libsodium-php-2.0.22t
+RUN cd ./libsodium-php-2.0.22t && pwd
+RUN cd ./libsodium-php-2.0.22t && /opt/bitnami/php/bin/phpize 
+RUN cd ./libsodium-php-2.0.22t && ./configure --with-php-config=/opt/bitnami/php/bin/php-config
+RUN cd ./libsodium-php-2.0.22t && make && make install
 
 RUN apt-get update && apt-get install -y libc-ares-dev && apt-get install -y libcurl4-openssl-dev && apt-get install -y zlib1g-dev && \
 rm -rf /var/lib/apt/lists/* && \
