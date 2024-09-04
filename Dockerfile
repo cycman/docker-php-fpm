@@ -11,6 +11,9 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends rsyslog && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
+
+WORKDIR /root
+
 ADD ./libsodium-1.0.20 ./libsodium-1.0.20
 RUN cd ./libsodium-1.0.20 && ./configure && make && make install
 
