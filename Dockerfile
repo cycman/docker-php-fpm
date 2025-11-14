@@ -1,4 +1,4 @@
-FROM bitnami/php-fpm:latest
+FROM registry.cn-hangzhou.aliyuncs.com/bitnami/php-fpm:latest 
 MAINTAINER cyc <cclikecode@gmail.com>
 
 RUN tdnf update -y && \
