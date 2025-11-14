@@ -1,4 +1,4 @@
-FROM pull registry.cn-hangzhou.aliyuncs.com/cyc_dev/php-fpm:8.4
+FROM  registry.cn-hangzhou.aliyuncs.com/cyc_dev/php-fpm:8.4
 MAINTAINER cyc <cclikecode@gmail.com>
 
 RUN tdnf update -y && \
