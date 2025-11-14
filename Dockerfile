@@ -1,6 +1,9 @@
 FROM bitnami/php-fpm:latest
 MAINTAINER cyc <cclikecode@gmail.com>
-RUN install_packages gcc autoconf build-essential cron vim rsyslog libc-ares-dev libcurl4-openssl-dev zlib1g-dev
+
+RUN tdnf update -y && \
+    tdnf install -y gcc autoconf make automake cronie vim rsyslog c-ares-devel libcurl-devel zlib-devel && \
+    tdnf clean all  # 清理缓存，减小镜像体积
 
 RUN apt-get update && \
     apt-get install -y gcc && \
