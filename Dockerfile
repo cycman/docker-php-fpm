@@ -3,15 +3,14 @@ MAINTAINER cyc <cclikecode@gmail.com>
 
 RUN tdnf update -y && \
     tdnf install -y \
-    gcc autoconf make automake \  # 编译工具（替代 build-essential）
-    cronie \                      # 定时任务（替代 cron）
-    vim rsyslog \                 # 文本编辑和日志工具
-    c-ares-devel \                # c-ares 开发库（替代 libc-ares-dev）
-    curl-devel \                  # curl 开发库（替代 libcurl4-openssl-dev）
-    zlib-devel \                  # zlib 开发库（替代 zlib1g-dev）
-    openssl-devel && \            # openssl 开发库（编译 swoole 需用）
+    gcc autoconf make automake \
+    cronie \
+    vim rsyslog \
+    c-ares-devel \
+    curl-devel \
+    zlib-devel \
+    openssl-devel && \
     tdnf clean all  # 清理缓存，减小镜像体积
-
 WORKDIR /root
 
 # 安装 libsodium
