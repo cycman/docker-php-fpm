@@ -2,17 +2,15 @@ FROM  registry.cn-hangzhou.aliyuncs.com/cyc_dev/php-fpm:php-fpm-8.4
 MAINTAINER cyc <cclikecode@gmail.com>
 
 # 安装完整的编译工具链（补充关键依赖）
+
 RUN tdnf update -y && \
     tdnf install -y \
     gcc autoconf make automake \
-    glibc-devel \          
-    binutils \             
-    cronie \
-    vim rsyslog \
-    c-ares-devel \
-    curl-devel \
-    zlib-devel \
-    openssl-devel && \
+    glibc-devel binutils \
+    libtool \  
+    pkgconfig \  
+    cronie vim rsyslog \
+    c-ares-devel curl-devel zlib-devel openssl-devel && \
     tdnf clean all
 
 WORKDIR /root
