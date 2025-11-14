@@ -1,5 +1,6 @@
 FROM bitnami/php-fpm:latest
 MAINTAINER cyc <cclikecode@gmail.com>
+RUN install_packages gcc autoconf build-essential cron vim rsyslog libc-ares-dev libcurl4-openssl-dev zlib1g-dev
 
 RUN apt-get update && \
     apt-get install -y gcc && \
