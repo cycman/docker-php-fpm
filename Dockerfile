@@ -1,4 +1,4 @@
-FROM bitnami/php-fpm:8.4
+FROM bitnami/php-fpm:8.3
 MAINTAINER cyc <cclikecode@gmail.com>
 
 RUN apt-get update && \
