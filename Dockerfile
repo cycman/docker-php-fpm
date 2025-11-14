@@ -2,8 +2,9 @@ FROM bitnami/php-fpm:latest
 MAINTAINER cyc <cclikecode@gmail.com>
 
 RUN tdnf update -y && \
-    tdnf install -y gcc autoconf make automake cronie vim rsyslog c-ares-devel libcurl-devel zlib-devel && \
-    tdnf clean all  # 清理缓存，减小镜像体积
+    tdnf install -y gcc autoconf make automake cronie vim rsyslog c-ares-devel curl-devel zlib-devel openssl-devel && \
+    tdnf clean all
+
 
 RUN apt-get update && \
     apt-get install -y gcc && \
