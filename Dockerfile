@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/bitnami/php-fpm:latest 
+FROM docker.io/bitnami/php-fpm:latest 
 MAINTAINER cyc <cclikecode@gmail.com>
 
 
