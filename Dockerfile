@@ -9,7 +9,7 @@ RUN tdnf update -y && \
     glibc-devel binutils \
     libtool \  
     cronie vim rsyslog \
-    libsodium libsodium-devel c-ares-devel curl-devel zlib-devel openssl-devel && \
+    git libsodium libsodium-devel c-ares-devel curl-devel zlib-devel openssl-devel && \
     tdnf clean all
 
 
