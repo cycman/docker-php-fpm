@@ -1,4 +1,4 @@
-FROM  registry.cn-hangzhou.aliyuncs.com/cyc_dev/php-fpm:php-fpm-8.4
+    FROM  registry.cn-hangzhou.aliyuncs.com/cyc_dev/php-fpm:php-fpm-8.4
 MAINTAINER cyc <cclikecode@gmail.com>
 
 # 安装完整的编译工具链（补充关键依赖）
@@ -8,23 +8,24 @@ RUN tdnf update -y && \
     gcc autoconf make automake \
     glibc-devel binutils \
     libtool \  
-    pkgconfig \  
     cronie vim rsyslog \
-    c-ares-devel curl-devel zlib-devel openssl-devel && \
+    libsodium libsodium-devel c-ares-devel curl-devel zlib-devel openssl-devel && \
     tdnf clean all
+
 
 WORKDIR /root
 
 # 安装 libsodium
-ADD ./libsodium-1.0.20 ./libsodium-1.0.20
-RUN cd ./libsodium-1.0.20 && ./configure && make && make install
+#ADD ./libsodium-1.0.20 ./libsodium-1.0.20
+#RUN cd ./libsodium-1.0.20 &&  ./configure &&  make 
+#RUN  make install
 
 # 安装 libsodium-php 扩展
-ADD ./libsodium-php-2.0.22 ./libsodium-php-2.0.22
-RUN cd ./libsodium-php-2.0.22 && \
-    /opt/bitnami/php/bin/phpize && \
-    ./configure --with-php-config=/opt/bitnami/php/bin/php-config && \
-    make && make install
+#ADD ./libsodium-php-2.0.22 ./libsodium-php-2.0.22
+#RUN cd ./libsodium-php-2.0.22 && \
+#    /opt/bitnami/php/bin/phpize && \
+#    ./configure --with-php-config=/opt/bitnami/php/bin/php-config && \
+#    make && make install
 
 # 安装 swoole 扩展（合并目录切换命令，确保在同一 shell 中执行）
 ADD ./swoole-v4.8.13 ./swoole-v4.8.13
